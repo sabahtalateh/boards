@@ -1,6 +1,5 @@
 imports:
 	importblocks ./...
 
-dev:
-	git pull
-	go run main.go
+run:
+	docker compose -p boards-be -f docker/local.yaml up --build
