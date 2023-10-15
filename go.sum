@@ -1,0 +1,4 @@
+github.com/go-chi/chi/v5 v5.0.10 h1:rLz5avzKpjqxrYwXNfmjkrYYXOyLJd37pz53UFHC6vk=
+github.com/go-chi/chi/v5 v5.0.10/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
+github.com/sabahtalateh/processor v0.0.1 h1:20yY6KmSgaEHxSRok75xDKTKoyGh0/qYY4NpKv7DM/g=
+github.com/sabahtalateh/processor v0.0.1/go.mod h1:1/MrCwf2S3G6iVTkP4vKffGIum5aCIYhygbEU2PRJbs=
