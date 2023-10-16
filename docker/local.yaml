@@ -1,8 +1,57 @@
+version: '3.8'
 services:
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_DB: boards
+      POSTGRES_USER: boards
+      POSTGRES_PASSWORD: boards
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: "pg_isready --username=boards && psql --username=boards --list"
+      interval: 100ms
+      timeout: 30s
+      retries: 99999
+
   api:
     build:
       context: ../.
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/api.Dockerfile
     container_name: api
     ports:
       - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  goose:
+    build:
+      context: ../.
+      dockerfile: docker/goose.Dockerfile
+    container_name: goose
+    environment:
+      DB_NETLOC: postgres:5432
+      DB_NAME: boards
+      USER: boards
+      PASSWORD: boards
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # adminer http://127.0.0.1:8080
+  # System: PostgreSQL
+  # Server: postgres:5432
+  # Username: boards
+  # Password: boards
+  # Database: boards
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
