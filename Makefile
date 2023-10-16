@@ -2,4 +2,4 @@ imports:
 	importblocks ./...
 
 run:
-	docker compose -p boards-be -f docker/local.yaml up --build
+	docker compose -p boards -f docker/local.yaml up --build

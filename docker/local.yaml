@@ -3,5 +3,6 @@ services:
     build:
       context: ../.
       dockerfile: docker/Dockerfile
+    container_name: boards_api
     ports:
       - "3000:3000"
